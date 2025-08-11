@@ -29,6 +29,17 @@ namespace Assignment_6._1._1
             head = house;
             size++;
         }
+        public void AddLast(House house)
+        {
+            if (IsEmpty())
+                AddFirst(house);
+            else
+            {
+                tail.next = house;
+                tail = tail.next;
+                size++;
+            }
+        }
         public House? RemoveFirst()
         {
             if (IsEmpty())
@@ -45,6 +56,28 @@ namespace Assignment_6._1._1
             }
             size--;
             return house;
+        }
+        public House? RemoveLast()
+        {
+            if (IsEmpty())
+                throw new InvalidOperationException("Cannot remove from empty list!");
+            House cur = head;
+            if (size == 1)
+            {
+                return RemoveFirst();
+            }
+            else
+            {
+                while (cur.next != tail)
+                {
+                    cur = cur.next;
+                }
+                House house = tail;
+                tail = cur;
+                cur.next = null;
+                size--;
+                return house;
+            }
         }
         public House? Search(int houseNumber)
         {
@@ -68,7 +101,7 @@ namespace Assignment_6._1._1
                 {
                     Console.Write(cur);
                     if (cur.next != null)
-                        Console.Write(" --> ");
+                        Console.Write(" -> ");
                     cur = cur.next;
                 }
                 Console.WriteLine();
@@ -79,6 +112,7 @@ namespace Assignment_6._1._1
             {
                 Console.WriteLine("There are no houses!");
             }
+            Console.WriteLine();
         }
     }
 }

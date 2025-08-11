@@ -23,6 +23,22 @@
                     Console.WriteLine(houses.Search(houseNumber));
                 }
             }
+
+            Console.WriteLine($"\nRemoveLast: {houses.RemoveLast()}");
+            houses.Display();
+
+            Console.WriteLine($"\nRemoveFirst: {houses.RemoveFirst()}");
+            houses.Display();
+
+            House house = new House() { number = 18, address = "A Street", houseType = HouseType.Ranch };
+            Console.WriteLine($"\nAddFirst: {house}");
+            houses.AddFirst(house);
+            houses.Display();
+
+            house = new House() { number = 21, address = "B Street", houseType = HouseType.Ranch };
+            Console.WriteLine($"\nAddLast: {house}");
+            houses.AddLast(house);
+            houses.Display();
         }
         static HouseLinkedList MockData()
         {
